@@ -1,6 +1,7 @@
 import * as React from 'react';
 import '/styles/TaskCard.scss';
-function TaskCard(){
+function TaskCard(selected){
+    if(selected == true){
     return(
         <div className="taskCard">
             <h1 className="subject">test subject</h1>
@@ -8,6 +9,7 @@ function TaskCard(){
             <div className="description">Description: test card</div>
             <div className='status'>Status: In Progress</div>
         </div>
-    )
+        )
+    }
 }
 export default TaskCard;

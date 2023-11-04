@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client';
 import TaskCard from './taskCard.jsx';
 import TaskList from './TaskList.jsx';
 import '/styles/container.scss';
+
 const App = () => {
   return (
     <div className='container'>
