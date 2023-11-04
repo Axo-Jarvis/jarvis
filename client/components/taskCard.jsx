@@ -1,8 +1,8 @@
 import * as React from 'react';
-
-function taskCard(){
+import '/styles/TaskCard.scss';
+function TaskCard(){
     return(
-        <div>
+        <div className="taskCard">
             <h1 className="subject">test subject</h1>
             <div className="member-assigned">Members: Patrick</div>
             <div className="description">Description: test card</div>
@@ -10,3 +10,4 @@ function taskCard(){
         </div>
     )
 }
+export default TaskCard;

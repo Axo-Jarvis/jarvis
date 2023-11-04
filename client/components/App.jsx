@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import BasicDateCalendar, * as calendar from './calendar.jsx';
 import { createRoot } from 'react-dom/client';
+import TaskCard from './taskCard.jsx';
+import TaskList from './TaskList.jsx';
+import '/styles/container.scss';
 const App = () => {
   return (
-    <div>
+    <div className='container'>
     <BasicDateCalendar/>
+    <TaskList/> <br/>
+    <TaskCard/><br/>
   </div>
   )
 };
