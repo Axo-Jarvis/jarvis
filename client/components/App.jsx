@@ -18,7 +18,9 @@ const App = () => {
   //   setUsername(name)
   // }
 
-  return <div>{isLogin ? test : <AuthPage changeLogin={changeLogin} />}</div>;
+  return (
+    <div>{isLogin ? 'NANCY' : <AuthPage changeLogin={changeLogin} />}</div>
+  );
 };
 
 export default App;

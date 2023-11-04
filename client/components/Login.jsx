@@ -36,15 +36,19 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-export default function Login() {
+export default function Login({ changeLogin, changeSignup }) {
   const goToSignup = () => {
     // api logic here so that when "don't have an account" link is clicked it takes you to that page
+    changeSignup();
   };
 
   const goToHomePage = () => {
     //api logic here so that when "sign in" button is clicked it:
     // 1) Verifies the email/password
     // 2) goes to home page for that user
+
+    //
+    changeLogin();
   };
 
   const handleSubmit = (event) => {

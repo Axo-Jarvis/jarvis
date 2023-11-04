@@ -6,7 +6,7 @@ export default function AuthPage({ changeLogin }) {
   const [isSignup, setIsSignup] = useState(false);
 
   const changeSignup = () => {
-    setIsSignup(true);
+    setIsSignup(!isSignup);
   };
 
   return (
