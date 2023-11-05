@@ -3,7 +3,7 @@ const pool = require('../models/db.js');
 const taskController = {};
 
 taskController.getTasks = async (req, res, next) => {
-  const { username } = req.body;
+  const username = req.query.username;
 
   try {
     const queryText = 'SELECT * FROM tasks WHERE username = $1';
