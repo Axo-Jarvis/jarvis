@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState, useContext } from 'react';
 import BasicDateCalendar, * as calendar from './calendar.jsx';
 import { createRoot } from 'react-dom/client';
 import TaskCard from './taskCard.jsx';
 import TaskList from './TaskList.jsx';
 import '/styles/container.scss';
 
+const [selectedDate, setSelectedDate] = useState(null);
+const handleDateChange = (date) => {
+  setSelectedDate(date);
+};
 const App = () => {
   return (
     <div className='container'>
-    <BasicDateCalendar/>
-    <TaskList/> <br/>
-    <TaskCard/><br/>
+    <BasicDateCalendar onDateChange={handleDateChange} />
+    <TaskList selectedDate={selectedDate}/> <br/>
+    <TaskCard selectedDate={selectedDate}/><br/>
   </div>
   )
 };
