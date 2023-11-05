@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useState } from 'react';
 
 // This login is using Material UI, for more information go here: https://github.com/mui/material-ui/tree/v5.14.16/docs/data/material/getting-started/templates/sign-in
 // more info also here: https://mui.com/material-ui/getting-started/templates/
@@ -37,27 +38,46 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function Login({ changeLogin, changeSignup }) {
+  const [curUsername, setCurUsername] = useState('');
+  const [curPassword, setCurPassword] = useState('');
+
   const goToSignup = () => {
     // api logic here so that when "don't have an account" link is clicked it takes you to that page
     changeSignup();
   };
 
-  const goToHomePage = () => {
-    //api logic here so that when "sign in" button is clicked it:
-    // 1) Verifies the email/password
-    // 2) goes to home page for that user
-
-    //
-    changeLogin();
-  };
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async event => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    // const data = new FormData(event.currentTarget);
+    // console.log({
+    //   email: data.get('email'),
+    //   password: data.get('password'),
+    // });
+
+    try {
+      const response = await fetch('/api/login', {
+        // Replace '/api/login' with your actual login route
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: curUsername,
+          password: curPassword,
+        }),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log(result);
+        console.log('Sucess!');
+        changeLogin();
+      } else {
+        console.error('Login failed.');
+      }
+    } catch (error) {
+      console.error('Network error:', error);
+    }
   };
 
   return (
@@ -93,6 +113,7 @@ export default function Login({ changeLogin, changeSignup }) {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={event => setCurUsername(event.target.value)}
             />
             <TextField
               margin="normal"
@@ -103,6 +124,7 @@ export default function Login({ changeLogin, changeSignup }) {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={event => setCurPassword(event.target.value)}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -113,7 +135,7 @@ export default function Login({ changeLogin, changeSignup }) {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              onClick={goToHomePage}
+              // onClick={goToHomePage}
             >
               Sign In
             </Button>

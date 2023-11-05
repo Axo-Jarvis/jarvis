@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useState } from 'react';
 
 //This signup component is using Material UI, for more information go here: https://github.com/mui/material-ui/tree/v5.14.16/docs/data/material/getting-started/templates/sign-up
 //more info also here: https://mui.com/material-ui/getting-started/templates/
@@ -37,26 +38,44 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp({ changeLogin, changeSignup }) {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [curUsername, setCurUsername] = useState('');
+  const [curPassword, setCurPassword] = useState('');
+
   const goToLogin = () => {
-    // logic here to go back to the log in page if someone clicks the link "Already have an account"
     changeSignup();
   };
 
-  const goToHomePage = () => {
-    //api logic here so that when "sign in" button is clicked it:
-    // 1) create new user and store in db backend
-    // 2) goes to home page for that user
-
-    changeLogin();
-  };
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async event => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+
+    try {
+      const response = await fetch('/api/signup', {
+        // Replace '/api/login' with your actual login route
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: curUsername,
+          password: curPassword,
+          firstName: firstName,
+          lastName: lastName,
+        }),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log(result);
+        console.log('Sucess!');
+        changeLogin();
+      } else {
+        console.error('Login failed.');
+      }
+    } catch (error) {
+      console.error('Network error:', error);
+    }
   };
 
   return (
@@ -93,6 +112,7 @@ export default function SignUp({ changeLogin, changeSignup }) {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  onChange={event => setFirstName(event.target.value)}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -103,6 +123,7 @@ export default function SignUp({ changeLogin, changeSignup }) {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
+                  onChange={event => setLastName(event.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -113,6 +134,7 @@ export default function SignUp({ changeLogin, changeSignup }) {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  onChange={event => setCurUsername(event.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -124,6 +146,7 @@ export default function SignUp({ changeLogin, changeSignup }) {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  onChange={event => setCurPassword(event.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -140,7 +163,6 @@ export default function SignUp({ changeLogin, changeSignup }) {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              onClick={goToHomePage}
             >
               Sign Up
             </Button>
