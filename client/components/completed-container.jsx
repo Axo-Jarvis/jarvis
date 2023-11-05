@@ -6,21 +6,6 @@ const Completed = () => {
   const [completedInput, setCompletedInput] = useState('');
   const [completed, setCompleted] = useState([]);
 
-  // prevent page reloading everytime you hit submit
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // add the task to the whole task list
-    completedInput(completedInput);
-    
-    // reset the input field to empty after submitting
-    setCompletedInput('');
-  };
-
-  const handleChange = (e) => {
-    setCompletedInput(e.target.value);
-  };
-
   const addCompletedTask = (task) => {
     setCompleted([
       ...completed,
@@ -32,7 +17,13 @@ const Completed = () => {
       },
     ]);
     console.log(completed);
+    setCompletedInput('');
   };
+
+  const deleteTask = id => {
+    setCompleted(completed.filter(task => task.id !== id))
+  }
+  console.log(completed)
 
   return (
     <div className='complete-container'>
@@ -43,7 +34,8 @@ const Completed = () => {
           type='text'
           className='completed-input'
           placeholder='Create a task'
-          onChange={handleChange}
+          onChange={(e) =>
+            setCompletedInput(e.target.value)}
           value={completedInput}
         />
       </form>
@@ -56,7 +48,7 @@ const Completed = () => {
           />
         );
       })}
-      <TaskButton handleClick={handleSubmit} addCompletedTask={addCompletedTask} />
+      <TaskButton type={addCompletedTask} input={completedInput} />
     </div>
   );
 };

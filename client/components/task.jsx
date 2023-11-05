@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 const Task = ({task, deleteTask}) => {
-  const [taskState, setTaskState] = useState([]);
-
 
   return (
     <div className='task-item'>

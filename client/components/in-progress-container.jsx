@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import TaskList from './task-btn.jsx';
+import React, { useState } from 'react';
+import TaskButton from './task-btn.jsx';
 import Task from './task.jsx';
 
 const InProgress = () => {
+  const [progressInput, setProgressInput] = useState('');
   const [inProgress, setInProgress] = useState([]);
 
   const addProgressTask = (task) => {
@@ -16,12 +17,27 @@ const InProgress = () => {
       },
     ]);
     console.log(inProgress);
+    setProgressInput('');
   };
+
+  const deleteTask = id => {
+    setInProgress(inProgress.filter(task => task.id !== id))
+  }
 
   return (
     <div className='progress-container'>
       <h1 className='progress-title'>In Progress</h1>
-      <TaskList addProgressTask={addProgressTask} />
+
+      <form className='progress-input'>
+        <input
+          type='text'
+          className='progress-input'
+          placeholder='Create a task'
+          onChange={(e) =>
+            setProgressInput(e.target.value)}
+          value={progressInput}
+        />
+      </form>
       {inProgress.map((task, index) => {
         return (
           <Task
@@ -31,6 +47,7 @@ const InProgress = () => {
           />
         );
       })}
+      <TaskButton input={progressInput} type={addProgressTask} />
     </div>
   );
 };

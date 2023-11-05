@@ -1,18 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import NewTaskContainer from './need-container.jsx';
-import InProgress from './in-progress-container.jsx';
-import Completed from './completed-container.jsx';
-import Login from './Login.jsx';
-import Signup from './Signup.jsx';
+import AuthPage from './AuthPage.jsx';
+import Home from './home-page.jsx';
 
 const App = () => {
-  return (<div>Hello
-  <NewTaskContainer />
-  <InProgress />
-  <Completed />
-  </div>
+  const [isLogin, setIsLogin] = useState(false);
+
+  // for Nancy
+  // const [username, setUsername] = useState(null);
+
+  const changeLogin = () => {
+    setIsLogin(true);
+  };
+
+  // For nancy
+  // const changeUsername = (name) => {
+  //   setUsername(name)
+  // }
+
+//   return (
+//     <div>{isLogin ? <Home /> : <AuthPage changeLogin={changeLogin} />}</div>
+//   );
+// };
+
+  return (
+    <Home />
   );
-};
+}
 
 export default App;
-

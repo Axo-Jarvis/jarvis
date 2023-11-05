@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import TaskList from './task-btn.jsx';
+import React, { useState } from 'react';
+import TaskButton from './task-btn.jsx';
 import Task from './task.jsx';
 
 const NewTaskContainer = () => {
+  const [newTaskInput, setNewTaskInput] = useState('');
   const [allNewTasks, setNewTasks] = useState([]);
-
 
   const addNewTask = (task) => {
     setNewTasks([
@@ -17,6 +17,7 @@ const NewTaskContainer = () => {
       },
     ]);
     console.log(allNewTasks);
+    setNewTaskInput('');
   };
 
   const deleteTask = id => {
@@ -24,17 +25,32 @@ const NewTaskContainer = () => {
   }
 
 console.log(allNewTasks)
-  return (
-    <div>
-    <div className="need-container">
-        <h1 className='need-title'>Need To Complete</h1>
-      <TaskList addNewTask={addNewTask} />
-      {allNewTasks.map((task, index) => {
-        return <Task task={task} key={index} deleteTask={() => deleteTask(task.id)}/>;
-      })}
-    </div>
-    </div>
-  );
+
+return (
+  <div className='new-task-container'>
+    <h1 className='new-task-title'>Need To Complete</h1>
+
+    <form className='new-task-input'>
+      <input
+        type='text'
+        className='new-task-input'
+        placeholder='Create a task'
+        onChange={(e) => setNewTaskInput(e.target.value)}
+        value={newTaskInput}
+      />
+    </form>
+    {allNewTasks.map((task, index) => {
+      return (
+        <Task
+          task={task}
+          key={index}
+          deleteTask={() => deleteTask(task.id)}
+        />
+      );
+    })}
+    <TaskButton type={addNewTask} input={newTaskInput}/>
+  </div>
+);
 };
 
 export default NewTaskContainer;
