@@ -5,11 +5,11 @@ import TaskCard from './taskCard.jsx';
 import TaskList from './TaskList.jsx';
 import '/styles/container.scss';
 
-const [selectedDate, setSelectedDate] = useState(null);
-const handleDateChange = (date) => {
-  setSelectedDate(date);
-};
 const App = () => {
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+  const [selectedDate, setSelectedDate] = useState(new Date());
   return (
     <div className='container'>
     <BasicDateCalendar onDateChange={handleDateChange} />
