@@ -30,10 +30,10 @@ const NewTaskContainer = () => {
     <div className="task-container">
       <h1 className="new-task-title">Need To Complete</h1>
 
-      <form className="new-task-input">
+      <form className="task-input-field">
         <input
           type="text"
-          className="new-task-input"
+          className="create-task"
           placeholder="Create a task"
           onChange={(e) => setNewTaskInput(e.target.value)}
           value={newTaskInput}

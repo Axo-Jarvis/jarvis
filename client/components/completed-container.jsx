@@ -32,7 +32,7 @@ const Completed = () => {
       <form className="task-input-field">
         <input
           type="text"
-          className="task-input"
+          className="create-task"
           placeholder="Create a task"
           onChange={(e) => setCompletedInput(e.target.value)}
           value={completedInput}
