@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 const Task = ({task, deleteTask}) => {
 
@@ -17,6 +17,7 @@ async asyncFunc(text) {
 const changeStatus = async(status) => {
   try {
     const response = await fetch(`api/updateTask/${id}`, {
+      // 'PUT' ?
       method: 'UPDATE',
       headers: {
         'Content-Type': 'application/json',
@@ -35,23 +36,24 @@ const changeStatus = async(status) => {
     }
   } catch (error) {
     console.log('Network error:', error);
-  }
+  }  
 }
+
+return (
+  <div className='task-item'>
+    <p>{task.task}</p>
+    <button className='set-new' onClick={() => setStatus('new')}>New Task</button>
+    <button className='set-in-progress' onClick={() => setStatus('inprogress')}>In Progress</button>
+    <button className='set-completed' onClick={() => setStatus('completed')}>Completed</button>
+
+    <button className='change-status' onClick={ async () => await changeStatus(status)}>New Task</button>
+    <button className='delete-task' onClick={() => deleteTask(task.id)}>Delete</button>
+  </div>
+);
 
 }
 
-  return (
-    <div className='task-item'>
-      <p>{task.task}</p>
-      <button className='set-new' onClick={() => setStatus('new')}>New Task</button>
-      <button className='set-inprog' onClick={() => setStatus('inprogress')}>New Task</button>
-      <button className='set-completed' onClick={() => setStatus('completed')}>New Task</button>
 
-      <button className='change-status' onClick={() => await changeStatus(status)}>New Task</button>
-      <button className='delete-task' onClick={() => deleteTask(task.id)}>Delete</button>
-    </div>
-  );
-}
 
 
 

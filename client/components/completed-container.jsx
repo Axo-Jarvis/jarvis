@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react';
 import TaskButton from './task-btn.jsx';
 import Task from './task.jsx';
 
-const Completed = () => {
+const Completed = ({makeCompletedTask, completedTasks}) => {
   const [completedInput, setCompletedInput] = useState('');
 
-// need to have button that moves task to the left (in progress)
-
-  console.log(completed)
+  // need to have button that moves task to the left (in progress)
 
   return (
     <div className='complete-container'>
@@ -23,7 +21,9 @@ const Completed = () => {
           value={completedInput}
         />
       </form>
-      {completed.map((task, index) => {
+      
+      
+      {completedTasks.map((task, index) => {
         return (
           <Task
             task={task}
@@ -32,7 +32,7 @@ const Completed = () => {
           />
         );
       })}
-      <TaskButton type={addCompletedTask} input={completedInput} />
+      {/* <TaskButton clickHandler={makeCompletedTask} input={completedInput} /> */}
     </div>
   );
 };

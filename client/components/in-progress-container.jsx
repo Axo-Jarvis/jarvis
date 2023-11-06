@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import TaskButton from './task-btn.jsx';
 import Task from './task.jsx';
 
-const InProgress = ({inProgressTasks, updateTask, deleteTask, setInProgress, currentUsername}) => {
+const InProgress = ({inProgressTasks, updateTask, deleteTask, makeInProgressTask, currentUsername}) => {
   const [progressInput, setProgressInput] = useState('');
 
 /*  need to have buttons that move left or right to update task status
@@ -33,7 +33,7 @@ const InProgress = ({inProgressTasks, updateTask, deleteTask, setInProgress, cur
           />
         );
       })}
-      {/* <TaskButton type={updateTask} input={progressInput} /> */}
+      {/* <TaskButton clickHandler={updateTask} input={progressInput} /> */}
     </div>
   );
 };

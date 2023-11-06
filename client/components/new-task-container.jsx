@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import TaskButton from './task-btn.jsx';
 import Task from './task.jsx';
 
-// does this need to accept 'setNewTasks' for line 29?
-const NewTaskContainer = ({newTasks, deleteTask, currentUser}) => {
+const NewTaskContainer = ({newTasks, setNewTasks, makeNewTask, deleteTask, currentUser}) => {
   const [newTaskInput, setNewTaskInput] = useState('');
- 
-  // create a useEffect that will make a get api request on load which will pull all the newt asks that have a status of new and update the alln new tasks state
-  const handleSubmit = async (e) => {
+  console.log('newTasks instanceof Array: ', newTasks instanceof Array);
+  // create a useEffect that will make a get api request on load which will pull all the new asks that have a status of new and update the alln new tasks state
+  const handleSubmit = async () => {
     try {
       const createTaskResponse = await fetch('api/createTask', {
         method: 'POST',
@@ -15,22 +14,46 @@ const NewTaskContainer = ({newTasks, deleteTask, currentUser}) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          // id: crypto.randomUUID(),
+          task_id: crypto.randomUUID(),
           subject: newTaskInput,
           status: 'new',
-          // username: currentUser below?
-          username: curUsername,
+          username: currentUser,
+          created_date: new Date(),
         }),
       });
-
+      console.log('❤️', createTaskResponse)
       if (createTaskResponse.ok) {
         const result = await createTaskResponse.json();
+        
         console.log('Success in creating task!');
+        setNewTasks(newTaskInput);
         // update task with result from creating task response
-        setNewTasks(result);
+        const updatedNewTasks = newTasks.slice().push(result.task)
+        console.log(updatedNewTasks);
+        makeNewTask(updatedNewTasks);
+      } else {
+        throw new Error('eeeeeeeeeeeerror')
       }
     } catch (error) {
       console.log('Network error:', error);
     }
+
+// newTasks = [{task}, {task}, {task}, {task}].map
+    
+    // RESULT
+    // {
+    //   message: 'Task Created',
+    //   task: {
+    //     id: 22,
+    //     task_id: '205',
+    //     subject: 'test',
+    //     status: 'needs to compelte',
+    //     created_date: '2023-11-06T18:47:31.038Z',
+    //     finish_date: null,
+    //     username: 'test20'
+    //   }
+    // }
   };
 
   //this is ONLY if create task is in new task container and not being passed down from home page
@@ -97,8 +120,8 @@ return (
         value={newTaskInput}
       />
     </form>
-    {/* below: are we mapping over newTasks prop? */}
-    {allNewTasks.map((task, index) => {
+    {console.log(newTasks, typeof newTasks)}
+    {/* {newTasks.map((task, index) => {
       return (
         <Task
           task={task}
@@ -107,9 +130,9 @@ return (
           onSubmit={handleSubmit}
         />
       );
-    })}
-    <TaskButton type={addNewTask} input={newTaskInput}/>
-    {/* what is addNewTask above? */}
+    })} */}
+    {/* <TaskButton clickHandler={makeNewTask} input={newTaskInput}/> */}
+    <TaskButton clickHandler={handleSubmit} />
   </div>
 );
 };

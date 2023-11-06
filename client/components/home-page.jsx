@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
 import NewTaskContainer from './new-task-container.jsx';
 import InProgress from './in-progress-container.jsx';
 import Completed from './completed-container.jsx';
@@ -9,19 +8,29 @@ const Home = ({ currentUser }) => {
   const [inProgressTasks, setInProgressTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
 
+  const makeNewTasks = (task) => {
+    console.log('typeof newTasks before', typeof newTasks)
+    setNewTasks(task)
+    console.log('typeof newTasks after', typeof newTasks)
+  }
+
+  const makeInProgressTask = (task) => {
+    setInProgressTasks(task)
+  }
+
+  const makeCompletedTask = (task) => {
+    setCompletedTasks(task)
+  }
+
+
 /*  here we make an async call to server to fetch ALL tasks
   after we receive ALl tasks, we update the respective states
   
-  test:   const allTasksResponse = await fetch(
-          'https://pokeapi.co/api/v2/pokemon/clefairy',
-          {
-            method: 'GET',
-          })
 */
   useEffect(() => {
     const fetchAllTask = async () => {
       try {
-        const allTasksResponse = await fetch(`api/getTasks/${currentUser}`, {
+        const allTasksResponse = await fetch(`/api/getTasks/${currentUser}`, {
             method: 'GET',
         });
 
@@ -132,8 +141,7 @@ const updateTask = ((currentUser, id, status) => {
         console.log('Network error:', error);
       }
     };
-    // is this typo?? meaning to call updateTaskRequest here??
-    deleteTaskRequest();
+    updateTaskRequest();
   },
 []);
 
@@ -143,15 +151,16 @@ const updateTask = ((currentUser, id, status) => {
       <NewTaskContainer
         newTasks={newTasks}
         inProgressTasks={inProgressTasks}
-        setNewTasks={setNewTasks}
+        makeNewTask={makeNewTasks}
         currentUser={currentUser}
         deleteTask={deleteTask}
         updateTask={updateTask}
+        setNewTasks={setNewTasks}
       />
       <InProgress
         newTasks={newTasks}
         inProgressTasks={inProgressTasks}
-        setInProgressTasks={setInProgressTasks}
+        makeInProgressTask={makeInProgressTask}
         currentUser={currentUser}
         deleteTask={deleteTask}
         updateTask={updateTask}
@@ -159,7 +168,8 @@ const updateTask = ((currentUser, id, status) => {
       <Completed
         newTasks={newTasks}
         inProgressTasks={inProgressTasks}
-        setCompletedTasks={setCompletedTasks}
+        makeCompletedTask={makeCompletedTask}
+        completedTasks={completedTasks}
         currentUser={currentUser}
         deleteTask={deleteTask}
         updateTask={updateTask}
