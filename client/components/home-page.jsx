@@ -1,3 +1,4 @@
+
 import React from "react";
 import NewTaskContainer from "./need-container.jsx";
 import InProgress from "./in-progress-container.jsx";
@@ -18,6 +19,7 @@ const Home = () => {
       {/* <StatusBar /> */}
       <PieChart />
     </>
+
   );
 };
 

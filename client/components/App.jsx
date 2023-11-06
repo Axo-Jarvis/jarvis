@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
-import AuthPage from "./AuthPage.jsx";
-import Home from "./home-page.jsx";
+import React, { createContext, useEffect, useState, useContext } from 'react';
+import BasicDateCalendar, * as calendar from './calendar.jsx';
+import { createRoot } from 'react-dom/client';
+import TaskCard from './taskCard.jsx';
+import TaskList from './TaskList.jsx';
+import AuthPage from './AuthPage.jsx';
+import Home from './home-page.jsx';
+import '/styles/container.scss';
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [username, setUsername] = useState(null);
 
-  // for Nancy
-
-  const changeLogin = (name) => {
+  const changeLogin = username => {
     setIsLogin(true);
     setUsername(name);
   };

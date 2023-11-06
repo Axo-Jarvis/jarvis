@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import TaskButton from "./task-btn.jsx";
-import Task from "./task.jsx";
+import React, { useEffect, useState } from 'react';
+import TaskButton from './task-btn.jsx';
+import Task from './task.jsx';
 
 const Completed = () => {
-  const [completedInput, setCompletedInput] = useState("");
+  const [completedInput, setCompletedInput] = useState('');
   const [completed, setCompleted] = useState([]);
 
-  const addCompletedTask = (task) => {
+  const addCompletedTask = task => {
     setCompleted([
       ...completed,
       {
@@ -17,11 +17,11 @@ const Completed = () => {
       },
     ]);
     console.log(completed);
-    setCompletedInput("");
+    setCompletedInput('');
   };
 
-  const deleteTask = (id) => {
-    setCompleted(completed.filter((task) => task.id !== id));
+  const deleteTask = id => {
+    setCompleted(completed.filter(task => task.id !== id));
   };
   console.log(completed);
 
@@ -34,7 +34,7 @@ const Completed = () => {
           type="text"
           className="create-task"
           placeholder="Create a task"
-          onChange={(e) => setCompletedInput(e.target.value)}
+          onChange={e => setCompletedInput(e.target.value)}
           value={completedInput}
         />
       </form>
@@ -47,7 +47,7 @@ const Completed = () => {
           />
         );
       })}
-      <TaskButton type={addCompletedTask} input={completedInput} />
+      {/* <TaskButton clickHandler={makeCompletedTask} input={completedInput} /> */}
     </div>
   );
 };

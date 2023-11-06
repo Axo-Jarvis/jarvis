@@ -15,9 +15,9 @@ userController.signup = async (req, res, next) => {
   }
   try {
     const searchQuery = 'SELECT * FROM user_login WHERE username = $1';
-    const userExists = await pool.query(searchQuery, [username]);
+    const users = await pool.query(searchQuery, [username]);
 
-    if (userExists.rows.length > 0) {
+    if (users.rows.length > 0) {
       return next({
         log: 'User already exists in userController.signup',
         status: 400,

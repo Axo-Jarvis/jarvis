@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import TaskButton from "./task-btn.jsx";
-import Task from "./task.jsx";
+import React, { useState } from 'react';
+import TaskButton from './task-btn.jsx';
+import Task from './task.jsx';
 
 const InProgress = () => {
-  const [progressInput, setProgressInput] = useState("");
+  const [progressInput, setProgressInput] = useState('');
   const [inProgress, setInProgress] = useState([]);
 
-  const addProgressTask = (task) => {
+  const addProgressTask = task => {
     setInProgress([
       ...inProgress,
       {
@@ -17,11 +17,11 @@ const InProgress = () => {
       },
     ]);
     console.log(inProgress);
-    setProgressInput("");
+    setProgressInput('');
   };
 
-  const deleteTask = (id) => {
-    setInProgress(inProgress.filter((task) => task.id !== id));
+  const deleteTask = id => {
+    setInProgress(inProgress.filter(task => task.id !== id));
   };
 
   return (
@@ -33,20 +33,20 @@ const InProgress = () => {
           type="text"
           className="create-task"
           placeholder="Create a task"
-          onChange={(e) => setProgressInput(e.target.value)}
+          onChange={e => setProgressInput(e.target.value)}
           value={progressInput}
         />
       </form>
-      {inProgress.map((task, index) => {
+      {inProgressTasks.map((task, index) => {
         return (
           <Task
             task={task}
             key={index}
-            deleteTask={() => deleteTask(task.id)}
+            deleteTask={() => deleteTask(currentUsername, task.id)}
           />
         );
       })}
-      <TaskButton input={progressInput} type={addProgressTask} />
+      {/* <TaskButton clickHandler={updateTask} input={progressInput} /> */}
     </div>
   );
 };
