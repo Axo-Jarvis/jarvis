@@ -10,20 +10,17 @@ import '/styles/container.scss';
 const App = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [username, setUsername] = useState(null);
+
   const changeLogin = username => {
     setIsLogin(true);
+    setUsername(name);
   };
 
-  // For nancy
-  // const changeUsername = (name) => {
-  //   setUsername(name)
-  // }
-
-  //   return (
-  //     <div>{isLogin ? <Home /> : <AuthPage changeLogin={changeLogin} />}</div>
-  //   );
-  // };
-  return <Home />;
+  return (
+    <div>{isLogin ? <Home /> : <AuthPage changeLogin={changeLogin} />}</div>
+  );
 };
+// return <Home />;
+// };
 
 export default App;

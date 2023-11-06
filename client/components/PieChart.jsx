@@ -9,7 +9,9 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 // This component is used to render the pie chart in the parent (dashboard) component.
 const PieChart = () => {
   const data = {
+
     labels: ['Need to Complete', 'In Progress', 'Completed'],
+
     datasets: [
       {
         label: '',
@@ -43,16 +45,19 @@ const PieChart = () => {
           },
         },
       },
-      // Get rid of the title options or use current date/time maybe
       title: {
         display: true,
-        text: 'Current Date MAYBE?',
+
+        text: "Task Tracker",
+
       },
     },
   };
 
-  // can target div and style in css
   return (
+
+    <div className="piechart">
+
     <div
       style={{
         width: '33vw',
@@ -62,6 +67,7 @@ const PieChart = () => {
         alignItems: 'center',
       }}
     >
+
       <Pie data={data} options={options} />
     </div>
   );
