@@ -1,6 +1,6 @@
 const username = 'test20'; // must exist in db
 
-const getTasks = async () => {
+const getTasks = async username => {
   try {
     // currently running in node, on the browser it would just be '/api/getTasks?username=${username}'
     const url = `http://localhost:3000/api/getTasks?username=${username}`;
@@ -16,6 +16,7 @@ const getTasks = async () => {
       const result = await response.json();
       console.log('Got Tasks!');
       console.log(result);
+      return result;
     } else {
       console.error('Server response not OK:', response);
     }
@@ -25,3 +26,5 @@ const getTasks = async () => {
 };
 
 getTasks();
+
+module.exports = getTasks;

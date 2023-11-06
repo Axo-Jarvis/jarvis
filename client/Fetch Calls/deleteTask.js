@@ -1,4 +1,4 @@
-const task_id = 110; // must exist in db
+const task_id = 100; // must exist in db
 
 const deleteTask = async () => {
   try {
