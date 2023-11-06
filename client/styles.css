@@ -8,14 +8,14 @@
 
 .home-container {
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: top;
 }
 
 .task-container {
   background-color: #e3f2fd;
   padding: 2rem;
-  border: 2px black solid;
+  border: 2px #dbdbdb solid;
   border-radius: 1rem;
   margin: 1rem;
 }
@@ -57,4 +57,24 @@
 .task-btn.delete:active {
   background-color: #9a0007;
   box-shadow: 0 3px #666;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5%;
+  border: 1px #dbdbdb solid;
+  margin-bottom: 10px;
+  margin-top: 15px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.piechart {
+  width: 100vw;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
