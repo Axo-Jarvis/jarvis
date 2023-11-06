@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import TaskButton from "./task-btn.jsx";
-import Task from "./task.jsx";
+import React, { useState } from 'react';
+import TaskButton from './task-btn.jsx';
+import Task from './task.jsx';
 
 const NewTaskContainer = () => {
-  const [newTaskInput, setNewTaskInput] = useState("");
+  const [newTaskInput, setNewTaskInput] = useState('');
   const [allNewTasks, setNewTasks] = useState([]);
 
-  const addNewTask = (task) => {
+  const addNewTask = task => {
     setNewTasks([
       ...allNewTasks,
       {
@@ -17,11 +17,11 @@ const NewTaskContainer = () => {
       },
     ]);
     console.log(allNewTasks);
-    setNewTaskInput("");
+    setNewTaskInput('');
   };
 
-  const deleteTask = (id) => {
-    setNewTasks(allNewTasks.filter((task) => task.id !== id));
+  const deleteTask = id => {
+    setNewTasks(allNewTasks.filter(task => task.id !== id));
   };
 
   console.log(allNewTasks);
@@ -35,7 +35,7 @@ const NewTaskContainer = () => {
           type="text"
           className="create-task"
           placeholder="Create a task"
-          onChange={(e) => setNewTaskInput(e.target.value)}
+          onChange={e => setNewTaskInput(e.target.value)}
           value={newTaskInput}
         />
       </form>
