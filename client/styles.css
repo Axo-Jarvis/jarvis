@@ -1,0 +1,60 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  border: none;
+}
+
+.home-container {
+  display: flex;
+  justify-content: left;
+  align-items: top;
+}
+
+.task-container {
+  background-color: #e3f2fd;
+  padding: 2rem;
+  border: 2px black solid;
+  border-radius: 1rem;
+  margin: 1rem;
+}
+
+.task-btn {
+  padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #25a0ed;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.3s;
+  margin-top: 1rem;
+}
+
+.task-btn:hover {
+  background-color: #1976d2;
+}
+
+.task-btn:active {
+  background-color: #1976d2;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.task-btn.delete {
+  background-color: #d32f2f;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+}
+
+.task-btn.delete:hover {
+  background-color: #b71c1c;
+}
+
+.task-btn.delete:active {
+  background-color: #9a0007;
+  box-shadow: 0 3px #666;
+}

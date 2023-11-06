@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import TaskButton from './task-btn.jsx';
-import Task from './task.jsx';
+import React, { useState } from "react";
+import TaskButton from "./task-btn.jsx";
+import Task from "./task.jsx";
 
 const NewTaskContainer = () => {
-  const [newTaskInput, setNewTaskInput] = useState('');
+  const [newTaskInput, setNewTaskInput] = useState("");
   const [allNewTasks, setNewTasks] = useState([]);
 
   const addNewTask = (task) => {
@@ -17,40 +17,40 @@ const NewTaskContainer = () => {
       },
     ]);
     console.log(allNewTasks);
-    setNewTaskInput('');
+    setNewTaskInput("");
   };
 
-  const deleteTask = id => {
-    setNewTasks(allNewTasks.filter(task => task.id !== id))
-  }
+  const deleteTask = (id) => {
+    setNewTasks(allNewTasks.filter((task) => task.id !== id));
+  };
 
-console.log(allNewTasks)
+  console.log(allNewTasks);
 
-return (
-  <div className='new-task-container'>
-    <h1 className='new-task-title'>Need To Complete</h1>
+  return (
+    <div className="task-container">
+      <h1 className="new-task-title">Need To Complete</h1>
 
-    <form className='new-task-input'>
-      <input
-        type='text'
-        className='new-task-input'
-        placeholder='Create a task'
-        onChange={(e) => setNewTaskInput(e.target.value)}
-        value={newTaskInput}
-      />
-    </form>
-    {allNewTasks.map((task, index) => {
-      return (
-        <Task
-          task={task}
-          key={index}
-          deleteTask={() => deleteTask(task.id)}
+      <form className="new-task-input">
+        <input
+          type="text"
+          className="new-task-input"
+          placeholder="Create a task"
+          onChange={(e) => setNewTaskInput(e.target.value)}
+          value={newTaskInput}
         />
-      );
-    })}
-    <TaskButton type={addNewTask} input={newTaskInput}/>
-  </div>
-);
+      </form>
+      {allNewTasks.map((task, index) => {
+        return (
+          <Task
+            task={task}
+            key={index}
+            deleteTask={() => deleteTask(task.id)}
+          />
+        );
+      })}
+      <TaskButton type={addNewTask} input={newTaskInput} />
+    </div>
+  );
 };
 
 export default NewTaskContainer;

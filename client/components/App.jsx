@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import AuthPage from './AuthPage.jsx';
-import Home from './home-page.jsx';
+import React, { useEffect, useState } from "react";
+import AuthPage from "./AuthPage.jsx";
+import Home from "./home-page.jsx";
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -17,14 +17,12 @@ const App = () => {
   //   setUsername(name)
   // }
 
-//   return (
-//     <div>{isLogin ? <Home /> : <AuthPage changeLogin={changeLogin} />}</div>
-//   );
-// };
+  //   return (
+  //     <div>{isLogin ? <Home /> : <AuthPage changeLogin={changeLogin} />}</div>
+  //   );
+  // };
 
-  return (
-    <Home />
-  );
-}
+  return <Home />;
+};
 
 export default App;

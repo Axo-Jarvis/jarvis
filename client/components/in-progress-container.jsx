@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import TaskButton from './task-btn.jsx';
-import Task from './task.jsx';
+import React, { useState } from "react";
+import TaskButton from "./task-btn.jsx";
+import Task from "./task.jsx";
 
 const InProgress = () => {
-  const [progressInput, setProgressInput] = useState('');
+  const [progressInput, setProgressInput] = useState("");
   const [inProgress, setInProgress] = useState([]);
 
   const addProgressTask = (task) => {
@@ -17,24 +17,23 @@ const InProgress = () => {
       },
     ]);
     console.log(inProgress);
-    setProgressInput('');
+    setProgressInput("");
   };
 
-  const deleteTask = id => {
-    setInProgress(inProgress.filter(task => task.id !== id))
-  }
+  const deleteTask = (id) => {
+    setInProgress(inProgress.filter((task) => task.id !== id));
+  };
 
   return (
-    <div className='progress-container'>
-      <h1 className='progress-title'>In Progress</h1>
+    <div className="task-container">
+      <h1 className="progress-title">In Progress</h1>
 
-      <form className='progress-input'>
+      <form className="task-input-field">
         <input
-          type='text'
-          className='progress-input'
-          placeholder='Create a task'
-          onChange={(e) =>
-            setProgressInput(e.target.value)}
+          type="text"
+          className="create-task"
+          placeholder="Create a task"
+          onChange={(e) => setProgressInput(e.target.value)}
           value={progressInput}
         />
       </form>
