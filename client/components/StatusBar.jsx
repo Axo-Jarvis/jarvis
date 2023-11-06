@@ -8,19 +8,6 @@ Chart.register(...registerables);
 
 // This component is used to render the status bar on top the dashboard.
 const StatusBar = () => {
-  // (line 11 - 20) need more information about how data is going to be handled/passed down
-  // const [progress, setProgress] = useState([null, null, null]);
-
-  // make sure to include dependency array if props (data) are being passed down
-  //   useEffect(() => {
-  //     const fetchData = async () => {
-  //       const newData = await getData();
-  //       setProgress(newData);
-  //     };
-
-  //     fetchData();
-  //   }, []);
-
   const data = {
     // can use " labels: [''] " for cleaner UI
     labels: ['Status'],
