@@ -4,25 +4,9 @@ import Task from './task.jsx';
 
 const Completed = () => {
   const [completedInput, setCompletedInput] = useState('');
-  const [completed, setCompleted] = useState([]);
 
-  const addCompletedTask = (task) => {
-    setCompleted([
-      ...completed,
-      {
-        id: crypto.randomUUID(),
-        task: task,
-        completed: true,
-        inProgress: false,
-      },
-    ]);
-    console.log(completed);
-    setCompletedInput('');
-  };
+// need to have button that moves task to the left (in progress)
 
-  const deleteTask = id => {
-    setCompleted(completed.filter(task => task.id !== id))
-  }
   console.log(completed)
 
   return (

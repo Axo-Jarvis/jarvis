@@ -2,14 +2,17 @@ import React, { useEffect, useState } from 'react';
 import AuthPage from './AuthPage.jsx';
 import Home from './home-page.jsx';
 
+
 const App = () => {
   const [isLogin, setIsLogin] = useState(false);
 
   // for Nancy
-  // const [username, setUsername] = useState(null);
+  const [username, setUsername] = useState(null);
+  // const [username, setUsername] = useState("Nancy");
 
-  const changeLogin = () => {
+  const changeLogin = (username) => {
     setIsLogin(true);
+    setUsername(username);
   };
 
   // For nancy
@@ -18,12 +21,12 @@ const App = () => {
   // }
 
 //   return (
-//     <div>{isLogin ? <Home /> : <AuthPage changeLogin={changeLogin} />}</div>
+//     <div>{isLogin ? <Home currentUser={userName}/> : <AuthPage changeLogin={changeLogin} />}</div>
 //   );
 // };
 
   return (
-    <Home />
+    <Home currentUser={username} />
   );
 }
 

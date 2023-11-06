@@ -71,7 +71,9 @@ export default function Login({ changeLogin, changeSignup }) {
         const result = await response.json();
         console.log(result);
         console.log('Sucess!');
-        changeLogin();
+        // changeLogin();
+        // update this to pass in username 
+        changeLogin(curUsername);
       } else {
         console.error('Login failed.');
       }
