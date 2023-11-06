@@ -2,27 +2,13 @@ import React, { useState } from 'react';
 import TaskButton from './task-btn.jsx';
 import Task from './task.jsx';
 
-const InProgress = () => {
+const InProgress = ({inProgressTasks, updateTask, deleteTask, makeInProgressTask, currentUsername}) => {
   const [progressInput, setProgressInput] = useState('');
-  const [inProgress, setInProgress] = useState([]);
 
-  const addProgressTask = (task) => {
-    setInProgress([
-      ...inProgress,
-      {
-        id: crypto.randomUUID(),
-        task: task,
-        completed: false,
-        inProgress: true,
-      },
-    ]);
-    console.log(inProgress);
-    setProgressInput('');
-  };
-
-  const deleteTask = id => {
-    setInProgress(inProgress.filter(task => task.id !== id))
-  }
+/*  need to have buttons that move left or right to update task status
+    clicking left will update task to new task
+    clicking right will update task to completed
+*/
 
   return (
     <div className='progress-container'>
@@ -38,16 +24,16 @@ const InProgress = () => {
           value={progressInput}
         />
       </form>
-      {inProgress.map((task, index) => {
+      {inProgressTasks.map((task, index) => {
         return (
           <Task
             task={task}
             key={index}
-            deleteTask={() => deleteTask(task.id)}
+            deleteTask={() => deleteTask(currentUsername, task.id)}
           />
         );
       })}
-      <TaskButton input={progressInput} type={addProgressTask} />
+      {/* <TaskButton clickHandler={updateTask} input={progressInput} /> */}
     </div>
   );
 };

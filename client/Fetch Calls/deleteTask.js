@@ -1,9 +1,9 @@
 const task_id = 110; // must exist in db
 
-const deleteTask = async () => {
+const deleteTask = async task_id => {
   try {
     // currently running in node, on the browser it would just be '/api/deleteTask'
-    const url = `http://localhost:3000/api/deleteTask`;
+    const url = `/api/deleteTask`;
 
     const taskToDelete = {
       task_id: task_id,
@@ -21,6 +21,7 @@ const deleteTask = async () => {
       const result = await response.json();
       console.log('Deleted Task!');
       console.log(result);
+      return result;
     } else {
       console.error('Server response not OK:', response.status);
     }
@@ -29,4 +30,4 @@ const deleteTask = async () => {
   }
 };
 
-deleteTask();
+export default deleteTask;

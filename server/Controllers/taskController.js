@@ -9,6 +9,8 @@ taskController.getTasks = async (req, res, next) => {
     const queryText = 'SELECT * FROM tasks WHERE username = $1';
     const { rows } = await pool.query(queryText, [username]);
 
+    console.log(rows, "rows")
+
     res.locals.tasks = rows;
     return next();
   } catch (error) {

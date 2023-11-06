@@ -40,7 +40,11 @@ pool.connect((err, client, release) => {
 });
 
 app.use(router);
-
+//
+app.use('*', (req,res) => {
+  res.status(404).send('Not Found');
+});
+//
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
