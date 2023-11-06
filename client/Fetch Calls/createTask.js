@@ -4,10 +4,16 @@ const subject = 'test';
 const taskStatus = 'test';
 const created_date = new Date();
 
-const createTask = async (task_id, username, subject, taskStatus, created_date) => {
+const createTask = async (
+  task_id,
+  username,
+  subject,
+  taskStatus,
+  created_date
+) => {
   try {
     // currently running in node, on the browser it would just be '/api/createTask'
-    const url = `http://localhost:3000/api/createTask`;
+    const url = `/api/createTask`;
 
     const newTask = {
       task_id: task_id,
@@ -37,7 +43,5 @@ const createTask = async (task_id, username, subject, taskStatus, created_date) 
     console.error('Network error:', error);
   }
 };
-
-createTask();
 
 export default createTask;

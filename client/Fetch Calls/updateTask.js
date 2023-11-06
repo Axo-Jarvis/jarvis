@@ -34,6 +34,4 @@ const updateTask = async (task_id, taskStatus, finish_date) => {
   }
 };
 
-updateTask();
-
 export default updateTask;

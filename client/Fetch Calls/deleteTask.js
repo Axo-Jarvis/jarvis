@@ -1,9 +1,9 @@
 const task_id = 110; // must exist in db
 
-const deleteTask = async (task_id) => {
+const deleteTask = async task_id => {
   try {
     // currently running in node, on the browser it would just be '/api/deleteTask'
-    const url = `http://localhost:3000/api/deleteTask`;
+    const url = `/api/deleteTask`;
 
     const taskToDelete = {
       task_id: task_id,
@@ -29,7 +29,5 @@ const deleteTask = async (task_id) => {
     console.error('Network error:', error);
   }
 };
-
-deleteTask();
 
 export default deleteTask;
