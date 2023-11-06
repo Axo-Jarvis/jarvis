@@ -26,9 +26,9 @@ taskController.updateTask = async (req, res, next) => {
     // if the task is not found
     if (!id) {
       return next({
-        log: "Task does not exist in",
+        log: 'Task does not exist in',
         status: 400,
-        message: { error: "Task does not exist" },
+        message: { error: 'Task does not exist' },
       });
     }
   } catch (err) {
@@ -48,18 +48,18 @@ taskController.deleteTask = async (req, res, next) => {
     // if the task is not found
     if (!id) {
       return next({
-        log: "Task does not exist",
+        log: 'Task does not exist',
         status: 404,
-        message: "Task not found",
+        message: 'Task not found',
       });
     }
     // let the user know it has been deleted
-    res.json({ message: "Task deleted successfully" });
+    res.json({ message: 'Task deleted successfully' });
   } catch (err) {
     return next({
       log: `An error occurred in taskController.deleteTask: ${err}`,
       status: 500,
-      message: "Internal Server Error",
+      message: 'Internal Server Error',
     });
   }
 };

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import AuthPage from "./AuthPage.jsx";
-import Home from "./home-page.jsx";
+import React, { useEffect, useState } from 'react';
+import AuthPage from './AuthPage.jsx';
+import Home from './home-page.jsx';
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(false);

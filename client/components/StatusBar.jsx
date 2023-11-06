@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Chart, registerables } from "chart.js";
-import { Bar } from "react-chartjs-2";
-import { BACKGROUND_COLOR, BORDER_COLOR } from "./chartColors";
-import dummyData from "./dummyData";
+import React, { useState, useEffect } from 'react';
+import { Chart, registerables } from 'chart.js';
+import { Bar } from 'react-chartjs-2';
+import { BACKGROUND_COLOR, BORDER_COLOR } from './chartColors';
+import dummyData from './dummyData';
 
 Chart.register(...registerables);
 
@@ -10,7 +10,7 @@ Chart.register(...registerables);
 const StatusBar = () => {
   const data = {
     // can use " labels: [''] " for cleaner UI
-    labels: ["Status"],
+    labels: ['Status'],
 
     // ^Need to change the label names depending on the exact words used in parent (dashboard) component
     // *Need to change how data is handled. Need more information about data format/structure
@@ -18,7 +18,7 @@ const StatusBar = () => {
     datasets: [
       {
         // ^label 1 - needs to be changed
-        label: "Need to Complete",
+        label: 'Need to Complete',
         // *data 1 - needs to be changed
         data: [dummyData[0]],
         backgroundColor: BACKGROUND_COLOR[0],
@@ -27,7 +27,7 @@ const StatusBar = () => {
       },
       {
         // ^label 2 - needs to be changed
-        label: "In Progress",
+        label: 'In Progress',
         // *data 2 - needs to be changed
         data: [dummyData[1]],
         backgroundColor: BACKGROUND_COLOR[1],
@@ -36,7 +36,7 @@ const StatusBar = () => {
       },
       {
         // ^label 3 - needs to be changed
-        label: "Completed",
+        label: 'Completed',
         // *data 3 - needs to be changed
         data: [dummyData[2]],
         backgroundColor: BACKGROUND_COLOR[2],
@@ -47,7 +47,7 @@ const StatusBar = () => {
   };
 
   const options = {
-    indexAxis: "y",
+    indexAxis: 'y',
     scales: {
       x: {
         stacked: true,
@@ -65,12 +65,12 @@ const StatusBar = () => {
         display: false,
       },
       tooltip: {
-        position: "nearest",
+        position: 'nearest',
         callbacks: {
           label: function (context) {
-            let label = context.dataset.label || "";
+            let label = context.dataset.label || '';
             if (label) {
-              label += ": ";
+              label += ': ';
             }
             if (context.parsed.x !== null) {
               label += `${context.parsed.x}%`;
@@ -85,7 +85,7 @@ const StatusBar = () => {
 
   // can target div and style in css
   return (
-    <div style={{ height: "50px", width: "100%" }}>
+    <div style={{ height: '50px', width: '100%' }}>
       <Bar data={data} options={options} />
     </div>
   );
