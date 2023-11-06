@@ -4,7 +4,6 @@ import Task from './task.jsx';
 
 const Completed = () => {
   const [completedInput, setCompletedInput] = useState('');
-  const [completed, setCompleted] = useState([]);
 
   const addCompletedTask = task => {
     setCompleted([
@@ -47,7 +46,7 @@ const Completed = () => {
           />
         );
       })}
-      <TaskButton type={addCompletedTask} input={completedInput} />
+      {/* <TaskButton clickHandler={makeCompletedTask} input={completedInput} /> */}
     </div>
   );
 };

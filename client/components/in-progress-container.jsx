@@ -4,7 +4,6 @@ import Task from './task.jsx';
 
 const InProgress = () => {
   const [progressInput, setProgressInput] = useState('');
-  const [inProgress, setInProgress] = useState([]);
 
   const addProgressTask = task => {
     setInProgress([
@@ -37,16 +36,16 @@ const InProgress = () => {
           value={progressInput}
         />
       </form>
-      {inProgress.map((task, index) => {
+      {inProgressTasks.map((task, index) => {
         return (
           <Task
             task={task}
             key={index}
-            deleteTask={() => deleteTask(task.id)}
+            deleteTask={() => deleteTask(currentUsername, task.id)}
           />
         );
       })}
-      <TaskButton input={progressInput} type={addProgressTask} />
+      {/* <TaskButton clickHandler={updateTask} input={progressInput} /> */}
     </div>
   );
 };
