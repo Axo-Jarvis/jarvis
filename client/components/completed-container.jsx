@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import TaskButton from './task-btn.jsx';
 import Task from './task.jsx';
 
-const Completed = ({makeCompletedTask, completedTasks}) => {
+const Completed = () => {
   const [completedInput, setCompletedInput] = useState('');
   const [completed, setCompleted] = useState([]);
 
@@ -38,9 +38,7 @@ const Completed = ({makeCompletedTask, completedTasks}) => {
           value={completedInput}
         />
       </form>
-      
-      
-      {completedTasks.map((task, index) => {
+      {completed.map((task, index) => {
         return (
           <Task
             task={task}

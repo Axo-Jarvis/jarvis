@@ -8,10 +8,6 @@ import Home from './home-page.jsx';
 import '/styles/container.scss';
 
 const App = () => {
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
-  const [selectedDate, setSelectedDate] = useState(new Date());
   const [isLogin, setIsLogin] = useState(false);
   const [username, setUsername] = useState(null);
   const changeLogin = username => {

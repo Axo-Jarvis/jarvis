@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import TaskButton from './task-btn.jsx';
 import Task from './task.jsx';
 
-const InProgress = ({inProgressTasks, updateTask, deleteTask, makeInProgressTask, currentUsername}) => {
+const InProgress = () => {
   const [progressInput, setProgressInput] = useState('');
   const [inProgress, setInProgress] = useState([]);
 

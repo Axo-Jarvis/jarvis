@@ -8,16 +8,11 @@ import ButtonAppBar from './Nav.jsx';
 
 const Home = () => {
   return (
-    <>
-      <ButtonAppBar />
-      <div className="home-container">
-        <NewTaskContainer />
-        <InProgress />
-        <Completed />
-      </div>
-      <StatusBar />
-      <PieChart />
-    </>
+    <div>
+      <NewTaskContainer />
+      <InProgress />
+      <Completed />
+    </div>
   );
 };
 
