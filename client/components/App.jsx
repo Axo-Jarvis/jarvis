@@ -21,7 +21,6 @@ const App = () => {
   //     <div>{isLogin ? <Home /> : <AuthPage changeLogin={changeLogin} />}</div>
   //   );
   // };
-
   return <Home />;
 };
 
