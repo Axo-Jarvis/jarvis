@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-
-const TaskButton = ({clickHandler, input}) => {
-  // return (
-  //     <button type='submit' className='task-btn' onClick={() => clickHandler(input)}>
-  //       Add Task
-  //     </button>
-  // );
+const TaskButton = ({ type, input }) => {
   return (
-      <button type='submit' className='task-btn' onClick={clickHandler}>
-        Add Task
-      </button>
+    <button type="submit" className="task-btn" onClick={() => type(input)}>
+      Add Task
+    </button>
   );
 };
 

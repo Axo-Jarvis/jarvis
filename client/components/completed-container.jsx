@@ -4,20 +4,37 @@ import Task from './task.jsx';
 
 const Completed = ({makeCompletedTask, completedTasks}) => {
   const [completedInput, setCompletedInput] = useState('');
+  const [completed, setCompleted] = useState([]);
 
-  // need to have button that moves task to the left (in progress)
+  const addCompletedTask = task => {
+    setCompleted([
+      ...completed,
+      {
+        id: crypto.randomUUID(),
+        task: task,
+        completed: true,
+        inProgress: false,
+      },
+    ]);
+    console.log(completed);
+    setCompletedInput('');
+  };
+
+  const deleteTask = id => {
+    setCompleted(completed.filter(task => task.id !== id));
+  };
+  console.log(completed);
 
   return (
-    <div className='complete-container'>
-      <h1 className='complete-title'>Completed</h1>
+    <div className="task-container">
+      <h1 className="complete-title">Completed</h1>
 
-      <form className='completed-input'>
+      <form className="task-input-field">
         <input
-          type='text'
-          className='completed-input'
-          placeholder='Create a task'
-          onChange={(e) =>
-            setCompletedInput(e.target.value)}
+          type="text"
+          className="create-task"
+          placeholder="Create a task"
+          onChange={e => setCompletedInput(e.target.value)}
           value={completedInput}
         />
       </form>

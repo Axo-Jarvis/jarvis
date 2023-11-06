@@ -4,23 +4,36 @@ import Task from './task.jsx';
 
 const InProgress = ({inProgressTasks, updateTask, deleteTask, makeInProgressTask, currentUsername}) => {
   const [progressInput, setProgressInput] = useState('');
+  const [inProgress, setInProgress] = useState([]);
 
-/*  need to have buttons that move left or right to update task status
-    clicking left will update task to new task
-    clicking right will update task to completed
-*/
+  const addProgressTask = task => {
+    setInProgress([
+      ...inProgress,
+      {
+        id: crypto.randomUUID(),
+        task: task,
+        completed: false,
+        inProgress: true,
+      },
+    ]);
+    console.log(inProgress);
+    setProgressInput('');
+  };
+
+  const deleteTask = id => {
+    setInProgress(inProgress.filter(task => task.id !== id));
+  };
 
   return (
-    <div className='progress-container'>
-      <h1 className='progress-title'>In Progress</h1>
+    <div className="task-container">
+      <h1 className="progress-title">In Progress</h1>
 
-      <form className='progress-input'>
+      <form className="task-input-field">
         <input
-          type='text'
-          className='progress-input'
-          placeholder='Create a task'
-          onChange={(e) =>
-            setProgressInput(e.target.value)}
+          type="text"
+          className="create-task"
+          placeholder="Create a task"
+          onChange={e => setProgressInput(e.target.value)}
           value={progressInput}
         />
       </form>

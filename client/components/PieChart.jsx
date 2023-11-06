@@ -7,7 +7,6 @@ import dummyData from './dummyData';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 // This component is used to render the pie chart in the parent (dashboard) component.
-
 const PieChart = () => {
   const data = {
     labels: ['Need to Complete', 'In Progress', 'Completed'],

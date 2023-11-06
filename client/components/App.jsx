@@ -16,17 +16,18 @@ const App = () => {
   const [username, setUsername] = useState(null);
   const changeLogin = username => {
     setIsLogin(true);
-    setUsername(username);
   };
-  return (
-    <div className='container'>
-          <Home currentUser={'test20'} />
-    <BasicDateCalendar onDateChange={handleDateChange} />
-    <TaskList selectedDate={selectedDate}/> <br/>
-    <TaskCard selectedDate={selectedDate}/><br/>
-  </div>
-  )
+
+  // For nancy
+  // const changeUsername = (name) => {
+  //   setUsername(name)
+  // }
+
+  //   return (
+  //     <div>{isLogin ? <Home /> : <AuthPage changeLogin={changeLogin} />}</div>
+  //   );
+  // };
+  return <Home />;
 };
-const root = createRoot(document.querySelector('#root'));
-root.render(<App />);
+
 export default App;

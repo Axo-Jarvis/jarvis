@@ -4,46 +4,37 @@ const taskController = require('./Controllers/taskController');
 
 const router = express.Router();
 
-router.post('/api/signup', userController.signup, (req, res) => {
-  res.status(201).json({
-    message: 'Signup Successful',
-    user: res.locals.userInfo,
-  });
+// add controller and thing to send back
+router.post('/login', (req, res) => {
+  res.status(200).json();
 });
 
-router.post('/api/login', userController.login, (req, res) => {
-  res.status(200).json({
-    message: 'Login Successful',
-    user: res.locals.userInfo,
-  });
+// add controller and thing to send back
+router.post('/signup', (req, res) => {
+  res.status(200).json();
 });
 
-router.get('/api/getTasks', taskController.getTasks, (req, res) => {
-  res.status(200).json({
-    message: 'Tasks Retrieved',
-    tasks: res.locals.tasks,
-  });
+// add controller and thing to send back
+router.get('/users', (req, res) => res.status(200).json());
+
+// add controller and thing to send back
+router.post('/addTask', (req, res) => {
+  res.status(200).json();
 });
 
-router.post('/api/createTask', taskController.createTask, (req, res) => {
-  res.status(201).json({
-    message: 'Task Created',
-    task: res.locals.task,
-  });
+// add controller and thing to send back
+router.post('/deleteTask', (req, res) => {
+  res.status(200).json();
 });
 
-router.post('/api/deleteTask', taskController.deleteTask, (req, res) => {
-  res.status(201).json({
-    message: 'Task Deleted',
-    task: res.locals.task,
-  });
+// add controller and thing to send back
+router.post('/updateTask', (req, res) => {
+  res.status(200).json();
 });
 
-router.post('/api/updateTask', taskController.updateTask, (req, res) => {
-  res.status(201).json({
-    message: 'Task Updated',
-    task: res.locals.task,
-  });
+// add controller and thing to send back
+router.get('/getTasks/:userID', (req, res) => {
+  res.status(200).json();
 });
 
 module.exports = router;
